@@ -20,6 +20,8 @@ to run the project locally, clone the project using the command
 
 https://github.com/Daphineatim/Awesome-books.git
 
+cd Awesome-books
+
 ### Run test
 
 navigate in to the project directory, from GitHub,
@@ -33,11 +35,11 @@ to test or run the application double click on the `index.html` file to open in 
 - Twitter: @dhaphyn
 - LinkedIn: DaphineAtim
 
-👤 ****
+👤 **Ali Karimi**
 
-- GitHub: 
+- GitHub: https://github.com/Aliahmad-karimi
 - Twitter:
-- LinkedIn: 
+- LinkedIn: https://www.linkedin.com/in/ali-karimi-028473157/
 
 ## 🤝 Contributing
 
