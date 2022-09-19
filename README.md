@@ -38,7 +38,7 @@ to test or run the application double click on the `index.html` file to open in 
 👤 **Ali Karimi**
 
 - GitHub: https://github.com/Aliahmad-karimi
-- Twitter:
+- Twitter: @aliahmad_karimi
 - LinkedIn: https://www.linkedin.com/in/ali-karimi-028473157/
 
 ## 🤝 Contributing
