@@ -34,11 +34,13 @@ function loadContent() {
   booksList.innerHTML = '';
   BooksObject.forEach((obj) => {
     booksList.innerHTML += `<div class="book-container">
-                      <h4 class="text-1">${obj.title}</h4>
-                      <h3 class="text-1">${obj.author}</h3>
-                    <button type="button" onclick="removeBook(this)" class="btn" data-id="${obj.id}">Remove</button>
-                    <hr>
-                </div>`;
+    <div class="text">
+    <h4 class="text-1">"${obj.title}" &nbsp</h4>
+    <h3 class="text-1">${obj.author}</h3>
+    </div>
+    <button type="button" onclick="removeBook(this)" class="btn" data-id="${obj.id}">Remove</button>
+      </div>
+<hr>`;
   });
 }
 function checkLocalStorage() {
