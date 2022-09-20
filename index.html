@@ -10,42 +10,24 @@
 </head>
 
 <body>
-  <header class="header-container">
-    <nav class="navigation">
-      <h2>Awesome Books</h2>
-      <ul class="menu">
-        <li class="list">List</li>
-        <li class="gap-line add">Add New</li>
-        <li class="contact">Contact</li>
-      </ul>
-    </nav>
-    <div id="date"></div>
-  </header>
   <main>
     <section class="container">
-
-      <div>
         <div class="books">
-          <h1 class="pad">All awesome books</h1>
+          <h2>Awesome Books</h2>
           <div class="books__list"></div>
         </div>
-
-         </div>
       <div class="add-book hide">
-        <h1 class="pad">Add a new book</h1>
-
         <div class="newbook__form">
           <label for="book"></label>
-          <input type="text" name="book" class="data" id="book" placeholder="Title" />
+          <input type="text" name="book" class="data" id="book" placeholder="Title" required />
           <br />
           <label for="author"></label>
-          <input type="text" name="author" class="data" id="author" placeholder="Author" />
+          <input type="text" name="author" class="data" id="author" placeholder="Author" required />
           <br />
           <input type="submit" class="text-1 btn" id="submit" value="Add" />
         </div>
       </div>
-
-  <script src="./style.js"></script>
+      <script src="./style.js"></script>
 </body>
 
 </html>
