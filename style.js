@@ -3,6 +3,7 @@ const addBtn = document.querySelector('#submit');
 const book = document.querySelector('#book');
 const author = document.querySelector('#author');
 const KEY = 'BOOKS_LIST';
+
 let BooksObject = [];
 
 class Books {
@@ -34,15 +35,14 @@ function loadContent() {
   booksList.innerHTML = '';
   BooksObject.forEach((obj) => {
     booksList.innerHTML += `<div class="book-container">
-    <div class="text">
-    <h4 class="text-1">"${obj.title}" &nbsp</h4>
-    <h3 class="text-1">${obj.author}</h3>
+    <div class="book">
+    <h4 class="text-1">"${obj.title}" by ${obj.author}</h4>
     </div>
     <button type="button" onclick="removeBook(this)" class="btn" data-id="${obj.id}">Remove</button>
-      </div>
-<hr>`;
+      </div>`;
   });
 }
+
 function checkLocalStorage() {
   if (JSON.parse(localStorage.getItem(KEY)) != null) {
     BooksObject = JSON.parse(localStorage.getItem(KEY));
@@ -50,19 +50,19 @@ function checkLocalStorage() {
   }
 }
 const books = new Books();
+
 function addBook() {
   books.add(book, author);
   checkLocalStorage();
   loadContent();
-  book.value = '';
-  author.value = '';
-  booksList.parentElement.classList.remove('hide');
-  author.parentElement.parentElement.classList.add('hide');
 }
+
 /* eslint-disable */
 function removeBook(element) {
     books.remove(element);
 }
+
 /* eslint-enable */
+
 addBtn.addEventListener('click', addBook);
 document.addEventListener('DOMContentLoaded', checkLocalStorage);
