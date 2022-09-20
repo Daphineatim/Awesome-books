@@ -1,34 +1,70 @@
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('submit').addEventListener('click', addBook);
-})
+const booksList = document.querySelector('.books__list');
+const addBtn = document.querySelector('#submit');
+const book = document.querySelector('#book');
+const author = document.querySelector('#author');
+const KEY = 'BOOKS_LIST';
+let BooksObject = [];
 
-let books = [];
-const addBook = (ev) => {
-    ev.preventDefault();
-    let book = {
-        id: Date.now(),
-        title: document.getElementById('book').value,
-        author: document.getElementById('author').value,
+class Books {
+    constructor() {
+        if (JSON.parse(localStorage.getItem(KEY)) != null) {
+            this.BooksObject = JSON.parse(localStorage.getItem(KEY));
+        } else {
+            this.BooksObject = [];
+        }
     }
-    books.push(book);
-    document.forms[0].reset();
-
-    // storing to the local storage
-    localStorage.setItem('BookList', JSON.stringify(books));
+    add(book, author) {
+        this.BooksObject.push({
+            id: this.BooksObject.length,
+            title: book.value,
+            author: author.value,
+        });
+        localStorage.setItem('BOOKS_LIST', JSON.stringify(this.BooksObject));
+    }
+    remove(element) {
+        const { id } = element.dataset;
+        element.parentElement.remove();
+        this.BooksObject.splice(this.BooksObject.findIndex((item) => item.id === parseInt(id, 10)), 1);
+        localStorage.setItem('BOOKS_LIST', JSON.stringify(this.BooksObject));
+    }
 }
-
-//for showing the list of books
-const list = window.localStorage.getItem('BookList');
-const bList = document.getElementsByClassName('bookLists');
 function loadContent() {
-    bList.innerHTML = '';
-    books.forEach((obj) => {
-      bList.innerHTML += `<div class="book-container">
-                      <div class="book">
-                        <h4 class="text-1">"${obj.title}"</h4>
-                        <h3 class="text-1">by ${obj.author}</h3>
-                      </div>
-                      <button type="button" onclick="removeBook(this)" class="btn" data-id="${obj.id}">Remove</button>
-                  </div>`;
+    booksList.innerHTML = '';
+    BooksObject.forEach((obj) => {
+        booksList.innerHTML += `<div class="book-container">
+                      <h4 class="text-1">${obj.title}</h4>
+                      <h3 class="text-1">${obj.author}</h3>
+                    <button type="button" onclick="removeBook(this)" class="btn" data-id="${obj.id}">Remove</button>
+                    <hr>
+                </div>`;
     });
-  }
+}
+function checkLocalStorage() {
+    if (JSON.parse(localStorage.getItem(KEY)) != null) {
+        BooksObject = JSON.parse(localStorage.getItem(KEY));
+        loadContent();
+    }
+}
+const books = new Books();
+function addBook() {
+    books.add(book, author);
+    checkLocalStorage();
+    loadContent();
+    book.value = '';
+    author.value = '';
+    booksList.parentElement.classList.remove('hide');
+    author.parentElement.parentElement.classList.add('hide');
+    contactInfo.classList.add('hide');
+}
+/* eslint-disable */
+function removeBook(element) {
+    books.remove(element);
+}
+/* eslint-enable */
+addBtn.addEventListener('click', addBook);
+list.addEventListener('click', () => {
+    booksList.parentElement.classList.remove('hide');
+    author.parentElement.parentElement.classList.add('hide');
+    contactInfo.classList.add('hide');
+});
+document.addEventListener('DOMContentLoaded', checkLocalStorage);
