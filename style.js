@@ -68,7 +68,7 @@ function addBook() {
 }
 /* eslint-disable */
 function removeBook(element) {
-    books.remove(element);
+  books.remove(element);
 }
 /* eslint-enable */
 addBtn.addEventListener('click', addBook);
